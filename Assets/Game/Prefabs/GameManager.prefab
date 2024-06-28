@@ -47,3 +47,6 @@ MonoBehaviour:
   piecePrefab: {fileID: 9132147156500669844, guid: 9620031b63bc33442ba8712a42b50e1f, type: 3}
   material: {fileID: 2100000, guid: 327c8e663df27e64ea75010221074928, type: 2}
   img: {fileID: 11400000, guid: 674a089efa766144a8844ca4d4979f80, type: 2}
+  usePowerUp: 0
+  rows: 3
+  cols: 3

@@ -4,5 +4,5 @@ using UnityEngine;
 public class ImageData : ScriptableObject
 {
     public Sprite sprite;
-    public int size;
+    public int rows, cols;
 }

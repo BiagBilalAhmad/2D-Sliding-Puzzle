@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,9 +65,32 @@ public class GameController : MonoBehaviour
         );
     }
 
-    public void OpenLevelsPanel()
+    public void OpenLevelsPanel(string mode)
     {
         SoundManager.instance.PlayPannelSound();
+
+        switch (mode)
+        {
+            case "Easy":
+                imageData.rows = 3;
+                imageData.cols = 5;
+                break;
+
+            case "Medium":
+                imageData.rows = 4;
+                imageData.cols = 6;
+                break;
+
+            case "Hard":
+                imageData.rows = 5;
+                imageData.cols = 7;
+                break;
+
+            default:
+                imageData.rows = 3;
+                imageData.cols = 5;
+                break;
+        }
 
         currentPanel = LevelPannel;
 
@@ -103,9 +127,8 @@ public class GameController : MonoBehaviour
         );
     }
 
-    public void SelectTypeLevel(int index)
+    public void SelectTypeLevel()
     {
-        imageData.size = index;
         gameMan = Instantiate(gameManager, Vector3.zero, Quaternion.identity);
         gameActualImg.sprite = imageData.sprite;
         SoundManager.instance.PlayPannelCloseSound();
