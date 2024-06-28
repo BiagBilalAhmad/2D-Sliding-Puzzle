@@ -1,18 +1,21 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    
+
     public GameObject selectedScreen;
     public Image slectedImg,gameActualImg;
     public ImageData imageData;
     public Ease easeType;
 
+    [Header("Panels")]
     public RectTransform LoginPannel;
+    public RectTransform ModesPannel;
     public RectTransform LevelPannel;
     public RectTransform inGamePannel;
     public RectTransform pausePannel;
@@ -20,12 +23,21 @@ public class GameController : MonoBehaviour
     public RectTransform gameOverPannel;
     public RectTransform storePannel;
     public RectTransform leaderBoardPannel;
+
+    [Header("Current Panel")]
+    public RectTransform currentPanel;
+
+    [Header("GamePlay")]
     public GameObject gameBoardBg;
     public GameObject GameBoard;
     public ParticleSystem GameBoardParticles;
     public GameObject gameManager;
     GameObject gameMan;
     public Timer timer;
+    public GameObject powerUp;
+    public TMP_Text powerUpText;
+    public bool hasPowerUp = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,16 +52,40 @@ public class GameController : MonoBehaviour
            Destroy(instance);
         }
     }
+
     public void StartGameBtn()
     {
         SoundManager.instance.PlayPannelSound();
 
+        currentPanel = ModesPannel;
+
         LoginPannel.DOAnchorPosX(-471, .25f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
-
-        LevelPannel.DOAnchorPosX(0, .25f).SetEase(easeType).SetUpdate(true)
-
-        ); ;
+            ModesPannel.DOAnchorPosX(0, .25f).SetEase(easeType).SetUpdate(true)
+        );
     }
+
+    public void OpenLevelsPanel()
+    {
+        SoundManager.instance.PlayPannelSound();
+
+        currentPanel = LevelPannel;
+
+        ModesPannel.DOAnchorPosX(-471, .25f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
+            LevelPannel.DOAnchorPosX(0, .25f).SetEase(easeType).SetUpdate(true)
+        );
+    }
+
+    public void CloseLevelsPanel()
+    {
+        SoundManager.instance.PlayPannelSound();
+
+        currentPanel = ModesPannel;
+
+        LevelPannel.DOAnchorPosX(-471, .25f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
+            ModesPannel.DOAnchorPosX(0, .25f).SetEase(easeType).SetUpdate(true)
+        );
+    }
+
     public void EnableSelectedScreen()
     {
        SoundManager.instance.PlayPannelPopSound();
@@ -57,52 +93,45 @@ public class GameController : MonoBehaviour
         selectedScreen.SetActive(true);
         selectedScreen.transform.DOScale(1f, .3f).SetEase(easeType).SetUpdate(true);
         slectedImg.sprite = imageData.sprite;
-
-
     }
+
     public void CloseSlectedScreen()
     {
         SoundManager.instance.PlayPannelCloseSound();
 
-        selectedScreen.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).SetUpdate(true).
-            OnComplete(() =>
-        selectedScreen.SetActive(true)
-
-            );
+        selectedScreen.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => selectedScreen.SetActive(true)
+        );
     }
+
     public void SelectTypeLevel(int index)
     {
-        
         imageData.size = index;
         gameMan = Instantiate(gameManager, Vector3.zero, Quaternion.identity);
         gameActualImg.sprite = imageData.sprite;
         SoundManager.instance.PlayPannelCloseSound();
-        selectedScreen.transform.DOScale(0f, .2f).SetEase(easeType).SetUpdate(true).SetUpdate(true).
-            OnComplete(() =>
-            {
-                selectedScreen.SetActive(true);
-
-                LevelPannel.DOAnchorPosX(-471, .2f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() =>
-                {
-
-                    SoundManager.instance.PlayPannelSound();
-                    gameBoardBg.transform.DOMoveX(0f, .2f).SetEase(easeType).SetUpdate(true);
-                    inGamePannel.DOAnchorPosX(0, .25f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
+        selectedScreen.transform.DOScale(0f, .2f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => {
+            selectedScreen.SetActive(true);
+            LevelPannel.DOAnchorPosX(-471, .2f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => {
+                SoundManager.instance.PlayPannelSound();
+                gameBoardBg.transform.DOMoveX(0f, .2f).SetEase(easeType).SetUpdate(true);
+                inGamePannel.DOAnchorPosX(0, .25f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
+                    timer.ResetTimer();
+                    timer.StartTimer();
+                    if (hasPowerUp)
                     {
-                        timer.ResetTimer();
-                        timer.StartTimer();
-                        SoundManager.instance.PlayPannelPopSound();
-                        GameBoard.transform.DOScale(1.98476f, .2f).SetEase(easeType).SetUpdate(true);
+                        powerUp.SetActive(true);
+                        powerUp.GetComponent<Button>().onClick.AddListener(() => { 
+                            gameMan.GetComponent<GameManager>().SetUsePowerUp();
+                            SoundManager.instance.PlayPannelCloseSound();
+                        });
                     }
-                        );
-                }
-
-
-                    ) ;
-            }
-
-            );
-
+                    else
+                        powerUp.SetActive(false);
+                    SoundManager.instance.PlayPannelPopSound();
+                    GameBoard.transform.DOScale(1.98476f, .2f).SetEase(easeType).SetUpdate(true);
+                });
+            });
+        });
     }
 
     public void PauseGame()
@@ -113,63 +142,44 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0f;
         pausePannel.transform.DOScale(1f, .3f).SetEase(easeType).SetUpdate(true);
     }
+
     public void Resume()
     {
         SoundManager.instance.PlayPannelCloseSound();
         pausePannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).
-            OnComplete(()=>
-
-            {
+            OnComplete(()=> {
                // SoundManager.instance.PlayPannelPopSound();
-
                 pausePannel.gameObject.SetActive(false);
                 Time.timeScale = 1f;
-
-            }
-
-            );
-
+            });
     }
 
     public void settings()
     {
-
         SoundManager.instance.PlayPannelCloseSound();
 
-        pausePannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).
-                    OnComplete(() =>
-
-                    {
-                        SoundManager.instance.PlayPannelPopSound();
-                        pausePannel.gameObject.SetActive(false);
-                        settingsPannel.gameObject.SetActive(true);
-                        settingsPannel.DOScale(1f,.3f).SetEase(easeType).SetUpdate(true);
-                        //sTime.timeScale = 0f;
-
-                    }
-
-                    );
+        pausePannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
+            SoundManager.instance.PlayPannelPopSound();
+            pausePannel.gameObject.SetActive(false);
+            settingsPannel.gameObject.SetActive(true);
+            settingsPannel.DOScale(1f,.3f).SetEase(easeType).SetUpdate(true);
+            //sTime.timeScale = 0f;
+        });
     }
+
     public void CloseSettings()
     {
         SoundManager.instance.PlayPannelCloseSound();
 
-        settingsPannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).
-                   OnComplete(() =>
+        settingsPannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
+            SoundManager.instance.PlayPannelPopSound();
 
-                   {
-                       SoundManager.instance.PlayPannelPopSound();
-
-                       pausePannel.gameObject.SetActive(true);
-                       settingsPannel.gameObject.SetActive(false);
-                       pausePannel.DOScale(1f, .3f).SetEase(easeType).SetUpdate(true);
-                       //sTime.timeScale = 0f;
-
-                   }
-
-                   );
+            pausePannel.gameObject.SetActive(true);
+            settingsPannel.gameObject.SetActive(false);
+            pausePannel.DOScale(1f, .3f).SetEase(easeType).SetUpdate(true);
+            //sTime.timeScale = 0f;
+        });
     }
-
 
     public void ShowGameOver()
     {
@@ -177,10 +187,7 @@ public class GameController : MonoBehaviour
         timer.StopTimer();
 
         gameOverPannel.transform.DOScale(1, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
-
-                       
-
-        GameBoardParticles.Play()
+            GameBoardParticles.Play()
         );
     }
 
@@ -189,8 +196,7 @@ public class GameController : MonoBehaviour
         timer.ResetTimer();
         timer.StopTimer();
         SoundManager.instance.PlayPannelCloseSound();
-        GameBoard.transform.DOScale(0, .2f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
-        {
+        GameBoard.transform.DOScale(0, .2f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
             foreach (Transform t in GameBoard.transform)
             {
                 Destroy(t.gameObject);
@@ -199,24 +205,16 @@ public class GameController : MonoBehaviour
             gameBoardBg.transform.DOMoveX(7.8888f, .2f).SetEase(easeType).SetUpdate(true);
             SoundManager.instance.PlayPannelSound();
             GameBoard.SetActive(false);
-            inGamePannel.DOAnchorPosX(471, .3f).SetEase(easeType).SetUpdate(true).OnComplete(()=>
-
-
-            {
+            inGamePannel.DOAnchorPosX(471, .3f).SetEase(easeType).SetUpdate(true).OnComplete(()=> {
                 SoundManager.instance.PlayPannelSound();
-
                 LevelPannel.DOAnchorPosX(0, .2f).SetEase(easeType).SetUpdate(true);
-            }
-            );
-            
-        }
-
-
-        );
+            });
+        });
     }
+
     public void NewGame()
     {
-        GameBoard.gameObject.SetActive( true );
+        GameBoard.gameObject.SetActive(true);
     }
 
     public void ShowStore()
@@ -231,39 +229,26 @@ public class GameController : MonoBehaviour
     public void CloseStore()
     {
         SoundManager.instance.PlayPannelCloseSound();
-
-
-        storePannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).OnComplete(()=>
-        
-        storePannel.gameObject.SetActive(true)
-        
+        storePannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).OnComplete(()=> 
+            storePannel.gameObject.SetActive(true)
         );
     }
-
 
     public void ShowLeaderBoard()
     {
         SoundManager.instance.PlayPannelSound();
-        LevelPannel.DOAnchorPosX(471, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
-
-        {
+        currentPanel.DOAnchorPosX(471, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
             SoundManager.instance.PlayPannelSound();
             leaderBoardPannel.DOAnchorPosX(0f, .3f).SetEase(easeType).SetUpdate(true);
-        }
-        
-
-        );
+        });
     }
+
     public void CloseLeaderBoard()
     {
         SoundManager.instance.PlayPannelSound();
-        leaderBoardPannel.DOAnchorPosX(471, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() =>
-        {
+        leaderBoardPannel.DOAnchorPosX(471, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
             SoundManager.instance.PlayPannelSound();
-            LevelPannel.DOAnchorPosX(0f, .3f).SetEase(easeType).SetUpdate(true);
-        }
-       
-
-        );
+            currentPanel.DOAnchorPosX(0f, .3f).SetEase(easeType).SetUpdate(true);
+        });
     }
 }

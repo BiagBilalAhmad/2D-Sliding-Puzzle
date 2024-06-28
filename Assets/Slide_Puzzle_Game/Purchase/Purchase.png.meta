@@ -3,7 +3,7 @@ guid: 20972a098b0e7bd47aff3479bbc9060e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -170,7 +170,7 @@ TextureImporter:
         width: 310
         height: 269
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,27 +178,6 @@ TextureImporter:
       bones: []
       spriteID: 5ce43bc308c9ad84684ea49c218a7f53
       internalID: 1385631005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_1
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 1610
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a36f73451b668c4d93893e8c4ef0a64
-      internalID: 2041070133
       vertices: []
       indices: 
       edges: []
@@ -241,69 +220,6 @@ TextureImporter:
       bones: []
       spriteID: 17b9f33f48cab9e4f95fb03d3467d0b2
       internalID: 241987697
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_7
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 1477
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43575cdc581946740be9db916cc5bc92
-      internalID: -1661079361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_9
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 1471
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d7fa4dbacf0b8343a9fab51231f7fb1
-      internalID: -720568444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_12
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 1465
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 576c5f6a6feda774b8c2ecc693f36b41
-      internalID: -1740058711
       vertices: []
       indices: 
       edges: []
@@ -435,27 +351,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Purchase_28
-      rect:
-        serializedVersion: 2
-        x: 1556
-        y: 681
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1180e0ecc1a317447b7daed0adb7fa17
-      internalID: -406595608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Purchase_29
       rect:
         serializedVersion: 2
@@ -498,27 +393,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Purchase_31
-      rect:
-        serializedVersion: 2
-        x: 1140
-        y: 445
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dee8abb174c145642b00818b2524f07f
-      internalID: -1854193242
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Purchase_32
       rect:
         serializedVersion: 2
@@ -535,258 +409,6 @@ TextureImporter:
       bones: []
       spriteID: 0ced5ab3de6a9f049a4cda5ee3b1604f
       internalID: 628203998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_33
-      rect:
-        serializedVersion: 2
-        x: 1369
-        y: 446
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51c1f15c288d8ed498202604c884cf4c
-      internalID: -1085712278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_34
-      rect:
-        serializedVersion: 2
-        x: 1628
-        y: 448
-        width: 6
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ae133df203f79444a8966b5cb7d9ae3
-      internalID: -636497936
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_35
-      rect:
-        serializedVersion: 2
-        x: 1091
-        y: 392
-        width: 43
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a2a89d082d7e3944b77170815d7aaaa
-      internalID: -336253066
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_36
-      rect:
-        serializedVersion: 2
-        x: 1289
-        y: 392
-        width: 13
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54d8eb4abb63b5b42a6f4c208b59e0c7
-      internalID: -144512216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_37
-      rect:
-        serializedVersion: 2
-        x: 1091
-        y: 169
-        width: 43
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97a901b2fc21d81499beb5c3d37f0cc5
-      internalID: -1700248062
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_38
-      rect:
-        serializedVersion: 2
-        x: 1272
-        y: 211
-        width: 30
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c12ab342173ee0e468995301956c0d56
-      internalID: 934841770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_39
-      rect:
-        serializedVersion: 2
-        x: 2020
-        y: 211
-        width: 6
-        height: 181
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d36c6ce67f415f7448f01e50a8066424
-      internalID: -1581816736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_40
-      rect:
-        serializedVersion: 2
-        x: 1259
-        y: 169
-        width: 37
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 013a80d652749f94a9527a42024d988e
-      internalID: 1525028815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_41
-      rect:
-        serializedVersion: 2
-        x: 1140
-        y: 157
-        width: 96
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 335752d5251a2dd4ab08781d3b8a7604
-      internalID: 802500940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_42
-      rect:
-        serializedVersion: 2
-        x: 1761
-        y: 145
-        width: 12
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f39fafcaa1b0994d80e994bf163088a
-      internalID: 1024363355
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_43
-      rect:
-        serializedVersion: 2
-        x: 1845
-        y: 139
-        width: 24
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 549c4511930484745bf87be7668d17cd
-      internalID: -1155246481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purchase_44
-      rect:
-        serializedVersion: 2
-        x: 1791
-        y: 139
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17a1ba3dbd712724288fbcfcde2a418b
-      internalID: -655895343
       vertices: []
       indices: 
       edges: []

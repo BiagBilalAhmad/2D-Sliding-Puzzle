@@ -3,7 +3,7 @@ guid: d128b7df522efda4c9ad738277d62b8a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -160,7 +160,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1614
+        width: 739
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db483c24369c32d4cbc0f18ca91b43ad
+      internalID: -44869460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1523
+        width: 739
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7dbce9467d99a4fa1a236d08e22f92
+      internalID: 1513017750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1278
+        width: 739
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 357c6a49af047a248932a4c55ffa2603
+      internalID: 1993050440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 1224
+        width: 739
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e070a4b3749e1f5429b883f9e2fc0e05
+      internalID: 752290509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 991
+        width: 739
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55d4ac2cba49064db437179cb59274c
+      internalID: 811175807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 975
+        width: 741
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61307606f7ce1a7459e89933dffceea9
+      internalID: -163190171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 679
+        width: 739
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26ca2a36faaf8e4c93b5c9d37361187
+      internalID: 1115584767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 692
+        width: 740
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de164f1f673339b42a114a1387311d36
+      internalID: -1689525147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 375
+        width: 739
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 442015a0d2d595d44b489f7806ab23e6
+      internalID: 554036253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 407
+        width: 739
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa5e470ae2df43f4d9eab259aef6f9ef
+      internalID: -1234002034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 81
+        width: 739
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd34be0e4ba4b89408df3e60c04d187b
+      internalID: 2050282521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mode_Tab_Sprite_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 138
+        width: 743
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463ca213bf1a87440b69d2a4d815bcd1
+      internalID: -981544454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -171,7 +423,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mode_Tab_Sprite_Sheet_0: -44869460
+      Mode_Tab_Sprite_Sheet_1: 1513017750
+      Mode_Tab_Sprite_Sheet_10: 554036253
+      Mode_Tab_Sprite_Sheet_11: -1234002034
+      Mode_Tab_Sprite_Sheet_12: 2050282521
+      Mode_Tab_Sprite_Sheet_13: -981544454
+      Mode_Tab_Sprite_Sheet_14: -1062572539
+      Mode_Tab_Sprite_Sheet_2: 1993050440
+      Mode_Tab_Sprite_Sheet_3: 752290509
+      Mode_Tab_Sprite_Sheet_4: 572692087
+      Mode_Tab_Sprite_Sheet_5: 811175807
+      Mode_Tab_Sprite_Sheet_6: 1670802511
+      Mode_Tab_Sprite_Sheet_7: -163190171
+      Mode_Tab_Sprite_Sheet_8: 1115584767
+      Mode_Tab_Sprite_Sheet_9: -1689525147
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

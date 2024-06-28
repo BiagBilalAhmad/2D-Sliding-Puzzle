@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; // Add this for TextMeshPro
+using TMPro;
 
 [System.Serializable]
 public class GameManager : MonoBehaviour
@@ -15,6 +15,15 @@ public class GameManager : MonoBehaviour
     private int size;
     private bool shuffling = false;
     private bool isGameCompleted = false; // Flag to track if the game is completed
+
+    public bool usePowerUp = false;
+    private Transform firstPressedPiece = null; // To keep track of the first pressed piece when power-up is active
+
+
+    public void SetUsePowerUp()
+    {
+        usePowerUp = true;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -147,23 +156,41 @@ public class GameManager : MonoBehaviour
             shuffling = true;
             StartCoroutine(WaitShuffle(0.5f));
         }
-      
+
         // On click send out ray to see if we click a piece.
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit)
             {
-                // Go through the list, the index tells us the position.
                 for (int i = 0; i < pieces.Count; i++)
                 {
                     if (pieces[i] == hit.transform)
                     {
-                       
+                        if (usePowerUp)
+                        {
+                            if (firstPressedPiece == null)
+                            {
+                                firstPressedPiece = pieces[i];
+                                SoundManager.instance.PlayPannelPopSound();
+                            }
+                            else
+                            {
+                                SwapPieces(firstPressedPiece, pieces[i]);
+                                SoundManager.instance.PlayPieceSound();
+                                firstPressedPiece = null;
+                                usePowerUp = false;
+                            }
+                            break;
+                        }
+
                         // Check each direction to see if valid move.
                         // We break out on success so we don't carry on and swap back again.
+
+                        // Vertical Check
                         if (SwapIfValid(i, -size, size)) { SoundManager.instance.PlayPieceSound(); break; }
                         if (SwapIfValid(i, +size, size)) { SoundManager.instance.PlayPieceSound(); break; }
+                        // Horizontal Check
                         if (SwapIfValid(i, -1, 0)) { SoundManager.instance.PlayPieceSound(); break; }
                         if (SwapIfValid(i, +1, size - 1)) { SoundManager.instance.PlayPieceSound(); break; }
                     }
@@ -186,6 +213,19 @@ public class GameManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void SwapPieces(Transform piece1, Transform piece2)
+    {
+        Vector3 tempPosition = piece1.localPosition;
+        piece1.localPosition = piece2.localPosition;
+        piece2.localPosition = tempPosition;
+
+        int index1 = pieces.IndexOf(piece1);
+        int index2 = pieces.IndexOf(piece2);
+
+        pieces[index1] = piece2;
+        pieces[index2] = piece1;
     }
 
     // We name the pieces in order so we can use this to check completion.

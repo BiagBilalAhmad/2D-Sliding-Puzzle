@@ -22,6 +22,8 @@ public class ImagesGenerator : MonoBehaviour
     }
     private void Start()
     {
+        numberImages = imagesSprites.Length;
+
        for (int i = 0; i < numberImages; i++)
         {
             // Instantiate the image container
