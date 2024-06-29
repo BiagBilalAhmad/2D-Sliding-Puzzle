@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour
     public RectTransform storePannel;
     public RectTransform leaderBoardPannel;
 
+    public Image gameOverImg;
+
     [Header("Current Panel")]
     public RectTransform currentPanel;
 
@@ -131,6 +133,7 @@ public class GameController : MonoBehaviour
     {
         gameMan = Instantiate(gameManager, Vector3.zero, Quaternion.identity);
         gameActualImg.sprite = imageData.sprite;
+        gameOverImg.sprite = imageData.sprite;
         SoundManager.instance.PlayPannelCloseSound();
         selectedScreen.transform.DOScale(0f, .2f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => {
             selectedScreen.SetActive(true);
@@ -225,6 +228,7 @@ public class GameController : MonoBehaviour
                 Destroy(t.gameObject);
             }
             Destroy(gameMan);
+            gameOverPannel.transform.DOScale(0, .3f).SetEase(easeType).SetUpdate(true);
             gameBoardBg.transform.DOMoveX(7.8888f, .2f).SetEase(easeType).SetUpdate(true);
             SoundManager.instance.PlayPannelSound();
             GameBoard.SetActive(false);

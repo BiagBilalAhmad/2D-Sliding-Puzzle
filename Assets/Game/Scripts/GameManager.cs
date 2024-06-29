@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform piecePrefab;
     public Material material;
     public ImageData img; // Assuming this is a custom class holding a sprite
-    private List<Transform> pieces;
+    public List<Transform> pieces;
     private int emptyLocation;
     private int size;
     private bool shuffling = false;
@@ -166,8 +166,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //CheckCompletion();
+
         // Check for completion.
-        if (!shuffling && !isGameCompleted && CheckCompletion())
+        if (!shuffling && !isGameCompleted)
         {
             isGameCompleted = true;
             shuffling = true;
@@ -194,6 +196,7 @@ public class GameManager : MonoBehaviour
                             else
                             {
                                 SwapPieces(firstPressedPiece, pieces[i]);
+                                CheckCompletion();
                                 SoundManager.instance.PlayPieceSound();
                                 firstPressedPiece = null;
                                 usePowerUp = false;
@@ -205,11 +208,11 @@ public class GameManager : MonoBehaviour
                         // We break out on success so we don't carry on and swap back again.
 
                         // Vertical Check
-                        if (SwapIfValid(i, -cols, cols)) { SoundManager.instance.PlayPieceSound(); break; }
-                        if (SwapIfValid(i, +cols, cols)) { SoundManager.instance.PlayPieceSound(); break; }
+                        if (SwapIfValid(i, -cols, cols)) { CheckCompletion(); SoundManager.instance.PlayPieceSound(); break; }
+                        if (SwapIfValid(i, +cols, cols)) { CheckCompletion(); SoundManager.instance.PlayPieceSound(); break; }
                         // Horizontal Check
-                        if (SwapIfValid(i, -1, 0)) { SoundManager.instance.PlayPieceSound(); break; }
-                        if (SwapIfValid(i, +1, cols - 1)) { SoundManager.instance.PlayPieceSound(); break; }
+                        if (SwapIfValid(i, -1, 0)) { CheckCompletion(); SoundManager.instance.PlayPieceSound(); break; }
+                        if (SwapIfValid(i, +1, cols - 1)) { CheckCompletion(); SoundManager.instance.PlayPieceSound(); break; }
                     }
                 }
             }
@@ -252,6 +255,7 @@ public class GameManager : MonoBehaviour
         {
             if (pieces[i].name != $"{i}")
             {
+                Debug.Log($"{pieces[i].name} == {i}");
                 return false;
             }
         }
