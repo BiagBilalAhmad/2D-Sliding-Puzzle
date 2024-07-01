@@ -25,25 +25,28 @@ public class HighScoreManager : MonoBehaviour
 
         entryTemplate.gameObject.SetActive(false);
 
-        //highScoreEntryList = new List<HighScoreEntry>()
-        //{
-        //    new HighScoreEntry{ name = "asdf", score = 223},
-        //    new HighScoreEntry{ name = "asdf", score = 123},
-        //    new HighScoreEntry{ name = "asdf", score = 423},
-        //    new HighScoreEntry{ name = "asdf", score = 723},
-        //    new HighScoreEntry{ name = "asdf", score = 523},
-        //    new HighScoreEntry{ name = "asdf", score = 623},
-        //    new HighScoreEntry{ name = "asdf", score = 123},
-        //    new HighScoreEntry{ name = "asdf", score = 3323},
-        //    new HighScoreEntry{ name = "asdf", score = 1223},
-        //    new HighScoreEntry{ name = "asdf", score = 923},
-        //};
+        if (highScoreEntryList == null)
+        {
+            highScoreEntryList = new List<HighScoreEntry>()
+            {
+                new HighScoreEntry{ name = "asdf", score = 223},
+                new HighScoreEntry{ name = "asdf", score = 123},
+                new HighScoreEntry{ name = "asdf", score = 423},
+                new HighScoreEntry{ name = "asdf", score = 723},
+                new HighScoreEntry{ name = "asdf", score = 523},
+                new HighScoreEntry{ name = "asdf", score = 623},
+                new HighScoreEntry{ name = "asdf", score = 123},
+                new HighScoreEntry{ name = "asdf", score = 3323},
+                new HighScoreEntry{ name = "asdf", score = 1223},
+                new HighScoreEntry{ name = "asdf", score = 923},
+            };
+            SaveHighScores();
+        }
 
         //AddHighScoreEntry("Hahahha", 10000);
 
         LoadHighScores();
 
-        //SaveHighScores();
     }
 
     public void LoadHighScores()

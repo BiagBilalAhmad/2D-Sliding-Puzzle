@@ -94,13 +94,13 @@ public class GameManager : MonoBehaviour
                 pieces.Add(piece);
                 // Pieces will be in a game board going from -1 to +1.
                 piece.localPosition = new Vector3(-1 + (2 * pieceWidth * col) + pieceWidth,
-                                                  1 - (2 * pieceHeight * row) - pieceHeight,
+                                                  1 - (3 * pieceHeight * row) - pieceHeight,
                                                   0);
 
                 //piece.localScale = ((2 * width) - gapThickness) * Vector3.one;
                 //piece.name = $"{(row * size) + col}";
 
-                piece.localScale = new Vector3((2 * pieceWidth) - gapThickness, (2 * pieceHeight) - gapThickness, 1);
+                piece.localScale = new Vector3((2 * pieceWidth) - gapThickness, (3 * pieceHeight) - gapThickness, 1);
                 piece.name = $"{(row * cols) + col}";
 
                 //  // Add a TextMeshPro component to display the number
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (pieces[i] == hit.transform)
                     {
-                        if (usePowerUp)
+                        if (usePowerUp && GameController.instance.powerupCount >= 1)
                         {
                             if (firstPressedPiece == null)
                             {
@@ -195,6 +195,8 @@ public class GameManager : MonoBehaviour
                             }
                             else
                             {
+                                GameController.instance.powerupCount--;
+                                GameController.instance.powerUpText.text = GameController.instance.powerupCount.ToString();
                                 SwapPieces(firstPressedPiece, pieces[i]);
                                 CheckCompletion();
                                 SoundManager.instance.PlayPieceSound();
@@ -259,6 +261,8 @@ public class GameManager : MonoBehaviour
                 return false;
             }
         }
+        int coins = GameController.instance.coinCount + Random.Range(75, 100);
+        PlayerPrefs.SetInt("Coins", coins);
         GameController.instance.ShowGameOver();
         return true;
     }

@@ -1,45 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
 {
     public TMP_Text coinTxt;
     public TMP_Text powerupsTxt;
 
+    public Button singlePowerup;
+    public Button multiplePowerup;
+
     bool canBuymore;
     private void Start()
     {
-        coinTxt.text = PlayerPrefs.GetInt("Coins", 0).ToString();
-        powerupsTxt.text = PlayerPrefs.GetInt("PowerUps", 0).ToString();
+        coinTxt.text = GameController.instance.coinCount.ToString();
+        powerupsTxt.text = GameController.instance.powerupCount.ToString();
 
-    }
-    public void BuySwapPowerUps(int count)
-    {
-        if (PlayerPrefs.GetInt("Coins", 0) >= count)
+        if (GameController.instance.coinCount < 900)
         {
-            PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins", 0) - (int)count));
-            coinTxt.text = PlayerPrefs.GetInt("Coins", 0).ToString();
-            if(canBuymore)
-            {
-                PlayerPrefs.SetInt("PowerUps", PlayerPrefs.GetInt("PowerUps", 0) + 3);
+            multiplePowerup.interactable = false;
+        }
 
-            }
-            else
-            {
-                PlayerPrefs.SetInt("PowerUps", PlayerPrefs.GetInt("PowerUps", 0) + 1);
-
-            }
-            powerupsTxt.text = PlayerPrefs.GetInt("PowerUps", 0).ToString();
-
-
-
+        if (GameController.instance.coinCount < 300)
+        {
+            singlePowerup.interactable = false;
         }
     }
 
-    public void CanBuyMore(bool val)
+    public void BuySinglePowerup()
     {
-        canBuymore = val;
+        if (GameController.instance.coinCount >= 300)
+        {
+            GameController.instance.powerupCount += 1;
+            powerupsTxt.text = GameController.instance.powerupCount.ToString();
+
+            GameController.instance.coinCount -= 300;
+            coinTxt.text = GameController.instance.coinCount.ToString();
+
+            PlayerPrefs.SetInt("Powerups", GameController.instance.powerupCount);
+        }
+
+        if (GameController.instance.coinCount < 300)
+        {
+            singlePowerup.interactable = false;
+        }
+    }
+
+    public void BuyMultiplePowerup()
+    {
+        if (GameController.instance.coinCount >= 900)
+        {
+            GameController.instance.powerupCount += 4;
+            powerupsTxt.text = GameController.instance.powerupCount.ToString();
+
+            GameController.instance.coinCount -= 900;
+            coinTxt.text = GameController.instance.coinCount.ToString();
+
+            PlayerPrefs.SetInt("Powerups", GameController.instance.powerupCount);
+        }
+
+        if (GameController.instance.coinCount < 900)
+        {
+            multiplePowerup.interactable = false;
+        }
     }
 }

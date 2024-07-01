@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2048
     height: 1061
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 53
+  controlID: 17
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 126
+  controlID: 15
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 52
+  controlID: 16
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -295,8 +295,8 @@ MonoBehaviour:
     y: 0
     width: 404
     height: 1011
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -1034,9 +1034,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1583.4941, y: 168.75415, z: 4.661813}
+    m_Target: {x: 0.35452378, y: -1.2606777, z: -5.2402825}
     speed: 2
-    m_Value: {x: 1583.4941, y: 168.75415, z: 4.661813}
+    m_Value: {x: 0.35452378, y: -1.2606777, z: -5.2402825}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1086,9 +1086,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 338.0063
+    m_Target: 9.028281
     speed: 2
-    m_Value: 338.0063
+    m_Value: 9.028281
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1150,9 +1150,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 6ec9ffff
       m_LastClickedID: 0
-      m_ExpandedIDs: 441ffdffa27bfeffea7bfefffc7bfeff0e7cfeff582bfffffc2cffff9c2dffffb82effff6851ffff365dffff385dffff3a5dffff3c5dffffd25dffffd45dffffd65dffffd85dffffda5dffff3060ffff3a60ffff4660ffff4e60ffff8661ffffc0c2ffffc2c2ffffcac2ffffeafafffff2fafffffcfaffff08fbffff0efbffff16fbffffda640000186500008e650000a8650000d0650000d86500000c6600009c6600000a670000266700008a670000f2670000fc670000146800003068000038680000d8680000fc680000
+      m_ExpandedIDs: 6cb2ffffb4b2ffffe6b5ffff7abbffffc2bbffff58bfffff88eeffffd2eeffffd6f1ffff16fbffff786600000c680000106800005c6800004469000076690000d69d0000329e00002c9f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1221,7 +1221,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Slide_Puzzle_Game/Purchase
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1229,30 +1229,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 78
   m_LastFolders:
-  - Assets/Slide_Puzzle_Game/Purchase
+  - Assets
   m_LastFoldersGridSize: 78
   m_LastProjectPath: H:\FURQAN\Unity Practice\Bilson Studios\2D Sliding Puzzle Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 141}
-    m_SelectedIDs: 38900000
-    m_LastClickedID: 36920
-    m_ExpandedIDs: 00000000626a0000646a0000666a0000686a00006a6a00006c6a00006e6a00008e6a00009c6a0000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 3a6d0000
+    m_LastClickedID: 27962
+    m_ExpandedIDs: 000000003a6d00003c6d00003e6d0000406d0000426d0000446d0000466d0000486d00004a6d000052a00000f8a5000008a60000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Samples
-      m_OriginalName: Samples
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 36924
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -1266,7 +1266,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000626a0000646a0000666a0000686a00006a6a00006c6a00006e6a0000
+    m_ExpandedIDs: 000000003a6d00003c6d00003e6d0000406d0000426d0000446d0000466d0000486d00004a6d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 3e64000084650000c8610000c061000078660000966500008e6500000e660000b27d0000ce660000ac9a0000f068000006680000666a0000ea680000000000008e6900009a690000a06900008c690000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1310,7 +1310,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 11}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

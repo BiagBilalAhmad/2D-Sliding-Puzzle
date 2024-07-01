@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,9 +40,16 @@ public class GameController : MonoBehaviour
     public TMP_Text powerUpText;
     public bool hasPowerUp = false;
 
+    [Header("Shop")]
+    public int coinCount;
+    public int powerupCount;
+
     // Start is called before the first frame update
     void Start()
     {
+        coinCount = PlayerPrefs.GetInt("Coins", 0);
+        powerupCount = PlayerPrefs.GetInt("Powerups", 0);
+
         SoundManager.instance.PlayPannelSound();
         LoginPannel.DOAnchorPosX(0, .6f).SetEase(easeType).SetUpdate(true);
         if(instance == null)
@@ -145,6 +151,7 @@ public class GameController : MonoBehaviour
                     timer.StartTimer();
                     if (hasPowerUp)
                     {
+                        powerUpText.text = powerupCount.ToString();
                         powerUp.SetActive(true);
                         powerUp.GetComponent<Button>().onClick.AddListener(() => { 
                             gameMan.GetComponent<GameManager>().SetUsePowerUp();
