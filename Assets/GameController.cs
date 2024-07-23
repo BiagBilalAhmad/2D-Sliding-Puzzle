@@ -36,9 +36,18 @@ public class GameController : MonoBehaviour
     public GameObject gameManager;
     GameObject gameMan;
     public Timer timer;
+
+    [Space]
     public GameObject powerUp;
     public TMP_Text powerUpText;
     public bool hasPowerUp = false;
+
+    [Space]
+    public TMP_Text InGameCoinCount;
+
+    [Space]
+    public GameObject LargeImageGO;
+    public Image InGameLargeImage;
 
     [Header("Shop")]
     public int coinCount;
@@ -80,23 +89,23 @@ public class GameController : MonoBehaviour
         switch (mode)
         {
             case "Easy":
-                imageData.rows = 3;
-                imageData.cols = 5;
+                imageData.rows = 5;
+                imageData.cols = 3;
                 break;
 
             case "Medium":
-                imageData.rows = 4;
-                imageData.cols = 6;
+                imageData.rows = 6;
+                imageData.cols = 4;
                 break;
 
             case "Hard":
-                imageData.rows = 5;
-                imageData.cols = 7;
+                imageData.rows = 7;
+                imageData.cols = 5;
                 break;
 
             default:
-                imageData.rows = 3;
-                imageData.cols = 5;
+                imageData.rows = 5;
+                imageData.cols = 3;
                 break;
         }
 
@@ -131,14 +140,16 @@ public class GameController : MonoBehaviour
     {
         SoundManager.instance.PlayPannelCloseSound();
 
-        selectedScreen.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => selectedScreen.SetActive(true)
+        selectedScreen.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => selectedScreen.SetActive(false)
         );
     }
 
     public void SelectTypeLevel()
     {
         gameMan = Instantiate(gameManager, Vector3.zero, Quaternion.identity);
+        InGameCoinCount.text = PlayerPrefs.GetInt("Coins", 0).ToString();
         gameActualImg.sprite = imageData.sprite;
+        InGameLargeImage.sprite = imageData.sprite;
         gameOverImg.sprite = imageData.sprite;
         SoundManager.instance.PlayPannelCloseSound();
         selectedScreen.transform.DOScale(0f, .2f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => {
@@ -165,6 +176,22 @@ public class GameController : MonoBehaviour
                 });
             });
         });
+    }
+
+    public void EnlargeImage()
+    {
+        SoundManager.instance.PlayPannelPopSound();
+
+        LargeImageGO.SetActive(true);
+        LargeImageGO.transform.DOScale(1f, .3f).SetEase(easeType).SetUpdate(true);
+    }
+
+    public void MinimizeLargeImage()
+    {
+        SoundManager.instance.PlayPannelCloseSound();
+
+        LargeImageGO.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).SetUpdate(true).OnComplete(() => selectedScreen.SetActive(false)
+        );
     }
 
     public void PauseGame()
