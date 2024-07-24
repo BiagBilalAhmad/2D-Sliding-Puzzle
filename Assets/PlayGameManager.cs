@@ -28,10 +28,12 @@ public class PlayGameManager : MonoBehaviour
         {
             // Continue with Play Games Services
             nameText.text = PlayGamesPlatform.Instance.GetUserDisplayName();
+            GameController.instance.playerName = PlayGamesPlatform.Instance.GetUserDisplayName();
         }
         else
         {
             nameText.text = "Failed!";
+            GameController.instance.playerName = "Player";
             // Disable your integration with Play Games Services or show a login button
             // to ask users to sign-in. Clicking it should call
             // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).

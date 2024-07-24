@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;  // Reference to the TextMeshProUGUI component
     private float startTime;
     private bool isRunning = false;
+    float timeElapsed = 0f;
 
     void Start()
     {
@@ -18,12 +19,23 @@ public class Timer : MonoBehaviour
     {
         if (isRunning)
         {
-            float timeElapsed = Time.time - startTime;
-            int minutes = Mathf.FloorToInt(timeElapsed / 60F);
-            int seconds = Mathf.FloorToInt(timeElapsed % 60F);
-            string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
-            timerText.text = timeText;
+            timeElapsed = Time.time - startTime;
+            
+            timerText.text = GetTimeString();
         }
+    }
+
+    public float GetTime()
+    {
+        return timeElapsed;
+    }
+
+    public string GetTimeString()
+    {
+        int minutes = Mathf.FloorToInt(timeElapsed / 60F);
+        int seconds = Mathf.FloorToInt(timeElapsed % 60F);
+        string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
+        return timeText;
     }
 
     public void StartTimer()

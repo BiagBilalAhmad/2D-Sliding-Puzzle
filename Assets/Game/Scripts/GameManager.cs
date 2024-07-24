@@ -197,6 +197,7 @@ public class GameManager : MonoBehaviour
                             {
                                 GameController.instance.powerupCount--;
                                 GameController.instance.powerUpText.text = GameController.instance.powerupCount.ToString();
+                                PlayerPrefs.SetInt("Powerups", GameController.instance.powerupCount);
                                 SwapPieces(firstPressedPiece, pieces[i]);
                                 CheckCompletion();
                                 SoundManager.instance.PlayPieceSound();
@@ -264,6 +265,7 @@ public class GameManager : MonoBehaviour
         int coins = GameController.instance.coinCount + Random.Range(75, 100);
         PlayerPrefs.SetInt("Coins", coins);
         GameController.instance.ShowGameOver();
+        HighScoreManager.Instance.AddHighScoreEntry(GameController.instance.playerName, Mathf.FloorToInt(GameController.instance.timer.GetTime()));
         return true;
     }
 

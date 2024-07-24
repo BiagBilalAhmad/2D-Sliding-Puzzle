@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    
 
+    public string playerName;
+
+    [Space]       
     public GameObject selectedScreen;
     public Image slectedImg,gameActualImg;
     public ImageData imageData;
@@ -58,6 +60,9 @@ public class GameController : MonoBehaviour
     {
         coinCount = PlayerPrefs.GetInt("Coins", 0);
         powerupCount = PlayerPrefs.GetInt("Powerups", 0);
+
+        if (playerName.Equals(string.Empty))
+            playerName = "Player";
 
         SoundManager.instance.PlayPannelSound();
         LoginPannel.DOAnchorPosX(0, .6f).SetEase(easeType).SetUpdate(true);
@@ -298,6 +303,7 @@ public class GameController : MonoBehaviour
     public void ShowLeaderBoard()
     {
         SoundManager.instance.PlayPannelSound();
+        HighScoreManager.Instance.LoadHighScores();
         currentPanel.DOAnchorPosX(471, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
             SoundManager.instance.PlayPannelSound();
             leaderBoardPannel.DOAnchorPosX(0f, .3f).SetEase(easeType).SetUpdate(true);

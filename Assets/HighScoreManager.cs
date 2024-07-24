@@ -11,11 +11,13 @@ public class HighScoreManager : MonoBehaviour
         Instance = this;
     }
 
-    [SerializeField] private Transform entryContainer;
-    [SerializeField] private Transform entryTemplate;
+    private Transform entryContainer;
+    private Transform entryTemplate;
 
     private List<HighScoreEntry> highScoreEntryList;
     private List<Transform> highScoreEntryTransformList;
+
+    private List<Transform> createdHighScores;
 
 
     public void Start()
@@ -25,23 +27,23 @@ public class HighScoreManager : MonoBehaviour
 
         entryTemplate.gameObject.SetActive(false);
 
-        if (highScoreEntryList == null)
-        {
-            highScoreEntryList = new List<HighScoreEntry>()
-            {
-                new HighScoreEntry{ name = "asdf", score = 223},
-                new HighScoreEntry{ name = "asdf", score = 123},
-                new HighScoreEntry{ name = "asdf", score = 423},
-                new HighScoreEntry{ name = "asdf", score = 723},
-                new HighScoreEntry{ name = "asdf", score = 523},
-                new HighScoreEntry{ name = "asdf", score = 623},
-                new HighScoreEntry{ name = "asdf", score = 123},
-                new HighScoreEntry{ name = "asdf", score = 3323},
-                new HighScoreEntry{ name = "asdf", score = 1223},
-                new HighScoreEntry{ name = "asdf", score = 923},
-            };
-            SaveHighScores();
-        }
+        //if (highScoreEntryList == null)
+        //{
+        //    highScoreEntryList = new List<HighScoreEntry>()
+        //    {
+        //        new HighScoreEntry{ name = "asdf", score = 223},
+        //        new HighScoreEntry{ name = "asdf", score = 123},
+        //        new HighScoreEntry{ name = "asdf", score = 423},
+        //        new HighScoreEntry{ name = "asdf", score = 723},
+        //        new HighScoreEntry{ name = "asdf", score = 523},
+        //        new HighScoreEntry{ name = "asdf", score = 623},
+        //        new HighScoreEntry{ name = "asdf", score = 123},
+        //        new HighScoreEntry{ name = "asdf", score = 3323},
+        //        new HighScoreEntry{ name = "asdf", score = 1223},
+        //        new HighScoreEntry{ name = "asdf", score = 923},
+        //    };
+        //    SaveHighScores();
+        //}
 
         //AddHighScoreEntry("Hahahha", 10000);
 
@@ -51,6 +53,19 @@ public class HighScoreManager : MonoBehaviour
 
     public void LoadHighScores()
     {
+        if(createdHighScores == null)
+        {
+            createdHighScores = new List<Transform>();
+        }
+
+        if (createdHighScores != null)
+        {
+            foreach (var entry in createdHighScores)
+            {
+                Destroy(entry.gameObject);
+            }
+        }
+
         string jsonString = PlayerPrefs.GetString("HighScoreTable");
         HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
         Debug.Log("HighScores Loaded!");
@@ -117,11 +132,15 @@ public class HighScoreManager : MonoBehaviour
         entryTransform.Find("NameTMP").GetComponent<TMP_Text>().text = name;
 
         int score = highScoreEntry.score;
-        entryTransform.Find("CoinsSection").Find("ScoreTMP").GetComponent<TMP_Text>().text = score.ToString();
+        int minutes = Mathf.FloorToInt(score / 60F);
+        int seconds = Mathf.FloorToInt(score % 60F);
+        string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
+        entryTransform.Find("CoinsSection").Find("ScoreTMP").GetComponent<TMP_Text>().text = timeText;
 
         //entryTransform.Find("Background").gameObject.SetActive(rank % 2 == 1);
 
         transformsList.Add(entryTransform);
+        createdHighScores.Add(entryTransform);
     }
 
     private class HighScores
