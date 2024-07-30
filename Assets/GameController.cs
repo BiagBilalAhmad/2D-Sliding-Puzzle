@@ -261,6 +261,11 @@ public class GameController : MonoBehaviour
         timer.ResetTimer();
         timer.StopTimer();
         SoundManager.instance.PlayPannelCloseSound();
+        pausePannel.transform.DOScale(0f, .3f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
+            // SoundManager.instance.PlayPannelPopSound();
+            pausePannel.gameObject.SetActive(false);
+            Time.timeScale = 1f;
+        });
         GameBoard.transform.DOScale(0, .2f).SetEase(easeType).SetUpdate(true).OnComplete(() => {
             foreach (Transform t in GameBoard.transform)
             {

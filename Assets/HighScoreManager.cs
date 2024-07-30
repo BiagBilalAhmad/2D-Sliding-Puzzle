@@ -17,7 +17,7 @@ public class HighScoreManager : MonoBehaviour
     private List<HighScoreEntry> highScoreEntryList;
     private List<Transform> highScoreEntryTransformList;
 
-    private List<Transform> createdHighScores;
+    [SerializeField] private List<Transform> createdHighScores;
 
 
     public void Start()
@@ -64,6 +64,8 @@ public class HighScoreManager : MonoBehaviour
             {
                 Destroy(entry.gameObject);
             }
+
+            createdHighScores.Clear();
         }
 
         string jsonString = PlayerPrefs.GetString("HighScoreTable");
@@ -74,7 +76,7 @@ public class HighScoreManager : MonoBehaviour
         {
             for (int j = i + 1; j < highScores.highScoreEntryList.Count; j++)
             {
-                if (highScores.highScoreEntryList[j].score > highScores.highScoreEntryList[i].score)
+                if (highScores.highScoreEntryList[j].score < highScores.highScoreEntryList[i].score)
                 {
                     HighScoreEntry tmp = highScores.highScoreEntryList[i];
 
